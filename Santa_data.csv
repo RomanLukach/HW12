@@ -1,0 +1,14 @@
+﻿picture,usePost,useCashLimit,cashLimit,cashLimitCurrency,useWish,useNames,isPhoneRequired
+gift,true,true,1,rub,true,true,true
+cup_one,false,true,1000,eur,true,true,false
+cup_two,true,true,50000,uah,true,false,true
+cake,false,true,100000,byn,true,false,false
+cup_cake,true,true,500000,kzt,false,true,true
+cookie_tree,false,true,999999,usd,false,true,false
+cookie_star,true,true,100,rub,false,false,true
+lollipop,false,true,500,eur,false,false,false
+mittens,true,,,,true,true,true
+tree,false,,,,true,true,false
+tree_toys,false,,,,true,false,true
+santa,false,,,,true,false,false
+house_one,true,,,,false,true,true
