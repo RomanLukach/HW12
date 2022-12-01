@@ -1,0 +1,4516 @@
+{
+	"info": {
+		"_postman_id": "ce10ff8d-76e4-4196-af8d-3e8dff8304b8",
+		"name": "Santa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "21080332-ce10ff8d-76e4-4196-af8d-3e8dff8304b8"
+	},
+	"item": [
+		{
+			"name": "Positive",
+			"item": [
+				{
+					"name": "#001 Password management",
+					"item": [
+						{
+							"name": "AS-6 Correct login / password",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "39188c44-c0d2-47e1-847a-10cd79872e1a"
+											}
+										}
+									],
+									"id": "8f79354e-0295-42ad-968e-0b0c51b6552c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Password change",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Password change responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.isVerified).to.eql(true);",
+													"  pm.expect(responseJson.verifyEmail).to.eql(null);",
+													"}); ",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"id": "61650b4d-33d4-472e-976b-1253526d8ed1"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"password_new\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
+												],
+												"type": "text/javascript",
+												"id": "e96f33c0-6bb4-44ad-96c2-f4e215e71834"
+											}
+										}
+									],
+									"id": "edc94fee-2cb8-4a07-93fe-32cb8dd00d8a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password_new}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/account/password",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"account",
+												"password"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Password change to initial",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Password change responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.isVerified).to.eql(true);",
+													"  pm.expect(responseJson.verifyEmail).to.eql(null);",
+													"}); ",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "d5631190-0d79-4d30-acfc-1daf8cdcf33f"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"id": "c78a716b-4f4d-452e-ab84-13dcec3bde64"
+											}
+										}
+									],
+									"id": "478908e7-034c-428e-b647-5e9a618d6f2d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/account/password",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"account",
+												"password"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "f4708120-c57f-4994-8377-e2c2c76b49f3"
+											}
+										}
+									],
+									"id": "d9ee649b-856e-42d2-87a5-2cb891add701",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "0236acba-8d55-45c3-ac54-8fc46345decd"
+						}
+					],
+					"id": "f3facee3-5191-4817-b96c-929d32d930d7"
+				},
+				{
+					"name": "#002 Box management with correct data",
+					"item": [
+						{
+							"name": "AS-27 Box Creation",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "9477aacf-927e-4ba2-ac21-020aeca9aac6"
+											}
+										}
+									],
+									"id": "334e202e-c4ae-4120-a4b5-b71316caaf65",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreatBox - Key",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"key\", pm.response.text())",
+													"",
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "8c198a60-3f7e-4199-b5ef-640b49870f4f"
+											}
+										}
+									],
+									"id": "1186139c-bf8f-412f-9a82-660fd4514f8f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/key",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"key"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #1 (Name)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// console.log('Create NewBox Step #1 (Name)')",
+													"// var jsonData = JSON.parse(responseBody);",
+													"// console.log(jsonData.box.name)",
+													"// console.log(jsonData.box.key)"
+												],
+												"type": "text/javascript",
+												"id": "6dc994b4-ee1a-4a08-9cfb-eb50bd6e1e93"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
+												],
+												"type": "text/javascript",
+												"id": "2f239472-d430-4714-a978-5b8d22f4b73a"
+											}
+										}
+									],
+									"id": "fb3a7a58-7c79-42a0-83fc-7fee3c3b27c9",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": null,\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #2 (Cover)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// console.log('Create NewBox Step #2 (Cover)')",
+													"// var jsonData = JSON.parse(responseBody);",
+													"// console.log(jsonData.box.picture)"
+												],
+												"type": "text/javascript",
+												"id": "da8e2385-d7a7-4e60-9f58-a2f1cebe95e1"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
+												],
+												"type": "text/javascript",
+												"id": "6bbdc512-7cd3-48ff-96ab-ff5d83012fa4"
+											}
+										}
+									],
+									"id": "6cb21158-39b1-4b21-beee-262a7d6cc9e9",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": \"{{picture}}\",\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #3 (Cost)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// console.log('Create NewBox Step #3 (Cost)')",
+													"// var jsonData = JSON.parse(responseBody);",
+													"// console.log(jsonData.box.useCashLimit)",
+													"// console.log(jsonData.box.cashLimit)",
+													"// console.log(jsonData.box.cashLimitCurrency)"
+												],
+												"type": "text/javascript",
+												"id": "cdace0ae-7465-4624-aaed-bef2bf8ce597"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"id": "64c517bd-5d50-49a4-9f3e-1a071afcea0c"
+											}
+										}
+									],
+									"id": "e36e7c74-83d2-4cdd-a5a4-815a44fb3ab9",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": \"{{picture}}\",\n  \"usePost\": false,\n  \"useCashLimit\": \"{{useCashLimit}}\",\n  \"cashLimit\": \"{{cashLimit}}\",\n  \"cashLimitCurrency\": \"{{cashLimitCurrency}}\",\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #4 (Additional)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// console.log('Create NewBox Step #4 (Additional)')",
+													"// var jsonData = JSON.parse(responseBody);",
+													"// console.log(jsonData.box.useWish)",
+													"// console.log(jsonData.box.usePost)",
+													"// console.log(jsonData.box.useNames)",
+													"// console.log(jsonData.box.isPhoneRequired)"
+												],
+												"type": "text/javascript",
+												"id": "cc384ced-ad36-4a51-9823-840a06177602"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"id": "971aeb3f-76bc-4f8e-93a4-bca4ba5677eb"
+											}
+										}
+									],
+									"id": "d1ea1b9c-c773-4563-ba84-23e9c30275d1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": \"{{picture}}\",\n  \"usePost\": \"{{usePost}}\",\n  \"useCashLimit\": \"{{useCashLimit}}\",\n  \"cashLimit\": \"{{cashLimit}}\",\n  \"cashLimitCurrency\": \"{{cashLimitCurrency}}\",\n  \"useWish\": \"{{useWish}}\",\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": {{$randomBoolean}},\n  \"isPhoneRequired\": \"{{isPhoneRequired}}\",\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Box adjustment",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// console.log('Box adjustment')",
+													"// var jsonData = JSON.parse(responseBody);",
+													"// console.log(jsonData.box.name)",
+													"// console.log(jsonData.box.key)",
+													"// console.log(jsonData.box.picture)",
+													"// console.log(jsonData.box.useCashLimit)",
+													"// console.log(jsonData.box.cashLimit)",
+													"// console.log(jsonData.box.cashLimitCurrency)",
+													"// console.log(jsonData.box.useWish)",
+													"// console.log(jsonData.box.usePost)",
+													"// console.log(jsonData.box.useNames)",
+													"// console.log(jsonData.box.isPhoneRequired)"
+												],
+												"type": "text/javascript",
+												"id": "b2ddba8b-0570-4423-a1e4-77350d21f3c1"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
+												],
+												"type": "text/javascript",
+												"id": "8a7878af-dabd-4f81-add7-59137f69f40a"
+											}
+										}
+									],
+									"id": "bbf9ccea-9d25-4812-af81-e99fffd38c81",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": \"{{picture}}\",\n  \"usePost\": \"{{usePost}}\",\n  \"useCashLimit\": \"{{useCashLimit}}\",\n  \"cashLimit\": \"{{cashLimit}}\",\n  \"cashLimitCurrency\": \"{{cashLimitCurrency}}\",\n  \"useWish\": \"{{useWish}}\",\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": {{$randomBoolean}},\n  \"isPhoneRequired\": \"{{isPhoneRequired}}\",\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Box status",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "7d2e2bbf-7d66-47a1-aeef-54c1d58cd33d"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"id": "78187225-8631-40e4-9fca-f80d01db90d2"
+											}
+										}
+									],
+									"id": "5fbc43eb-612d-485e-bf84-aa600cdfc8d1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/{{key}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"{{key}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete box",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "1cc14f50-1448-4ead-b7df-5436a29d69fd"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"id": "937a10a9-97a7-4032-b930-14c950c1d602"
+											}
+										}
+									],
+									"id": "3eb64d7b-2063-4db2-b9d3-7d7f58cfc0d0",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/{{key}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"{{key}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"// pm.environment.set(\"key\", '')",
+													"// pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "8058605b-2cde-4812-aef8-4c6b240d124a"
+											}
+										}
+									],
+									"id": "0688d6e5-0558-4eb5-93a9-50ba073ac405",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "afc7dfbc-7d05-4e65-a1dc-90356602fdeb"
+						},
+						{
+							"name": "AS-28 Box adjustment",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "38530e8b-3158-429f-9e4f-b2ae557ce5c0"
+											}
+										}
+									],
+									"id": "e323f7f8-9565-4757-8e73-c67df22781eb",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Box adjustment",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// console.log('Box adjustment')",
+													"// var jsonData = JSON.parse(responseBody);",
+													"// console.log(jsonData.box.name)",
+													"// console.log(jsonData.box.key)",
+													"// console.log(jsonData.box.picture)",
+													"// console.log(jsonData.box.useCashLimit)",
+													"// console.log(jsonData.box.cashLimit)",
+													"// console.log(jsonData.box.cashLimitCurrency)",
+													"// console.log(jsonData.box.useWish)",
+													"// console.log(jsonData.box.usePost)",
+													"// console.log(jsonData.box.useNames)",
+													"// console.log(jsonData.box.isPhoneRequired)"
+												],
+												"type": "text/javascript",
+												"id": "d79a4527-b357-4449-85d8-5beac79bf04b"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
+												],
+												"type": "text/javascript",
+												"id": "630702da-7ecf-4823-b532-f26288789a19"
+											}
+										}
+									],
+									"id": "028b6e84-37d6-4de9-a990-8f243cfb7914",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": \"{{picture}}\",\n  \"usePost\": \"{{usePost}}\",\n  \"useCashLimit\": \"{{useCashLimit}}\",\n  \"cashLimit\": \"{{cashLimit}}\",\n  \"cashLimitCurrency\": \"{{cashLimitCurrency}}\",\n  \"useWish\": \"{{useWish}}\",\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": {{$randomBoolean}},\n  \"isPhoneRequired\": \"{{isPhoneRequired}}\",\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "fd023f73-f03c-4760-837c-421224201022"
+											}
+										}
+									],
+									"id": "247e4f61-34ae-4591-b7ae-653099d48ab4",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "e8019fa2-6465-4a99-a777-caf4cd84f8ea"
+						},
+						{
+							"name": "AS-30 Create Box Name (backspace 1 symbol)",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "a93ce3d7-5431-40e5-8d21-26c0c461ffed"
+											}
+										}
+									],
+									"id": "5523f2be-3791-4a14-aaf0-240043c4b82f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreatBox - Key (alphanumeric and special symbols)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// max key lenght is 64",
+													"pm.environment.set(\"key\", 'QWER123±!@')",
+													"",
+													"",
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "3d2563aa-4076-449e-b001-648cc03d3170"
+											}
+										}
+									],
+									"id": "14f0ab5a-e04c-438d-9e0a-66656c48db67",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/key",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"key"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #1 - Name",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 400 Bad Request', () => {",
+													"    pm.response.to.have.status(400)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"console.log('Create NewBox Step #1 (Name)')",
+													"",
+													"const responseJson = pm.response.json();",
+													"pm.test('Error message - validations.invalid ', () => {",
+													"    pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+													"    pm.expect(responseJson.error.errors[0].transKey).to.eql('validations.invalidBoxKey');",
+													"    pm.expect(responseJson.error.errors[0].field).to.eql('key');",
+													"})"
+												],
+												"type": "text/javascript",
+												"id": "c9691a05-51d0-49a7-98e2-06fbd5f06774"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", pm.variables.replaceIn(\" \"))"
+												],
+												"type": "text/javascript",
+												"id": "b0f66b5c-9a67-4dad-830a-b1cd68e3ac79"
+											}
+										}
+									],
+									"id": "c7f798a7-2875-44b7-84b5-e2553adb207a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": null,\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "3bca159d-f4ca-4669-9f5a-05b5fc291c7f"
+											}
+										}
+									],
+									"id": "4c32e9c1-d418-48dd-a6d4-cab753dd1887",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "8861a90f-9c03-4d9d-b00f-bbdbc7d48802"
+						},
+						{
+							"name": "AS-33 Create Box Name (special symbols)",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "0b3c93bd-e00f-4c7d-add6-15aecf06e245"
+											}
+										}
+									],
+									"id": "e24a0748-679b-4258-96fe-919d429b62f8",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreatBox - Key (alphanumeric and special symbols)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// max key lenght is 64",
+													"pm.environment.set(\"key\", 'QWER123±!@')",
+													"",
+													"",
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "19556756-0ddd-4316-a536-fab4485aba77"
+											}
+										}
+									],
+									"id": "57aa8b45-caa6-43d8-9df5-71ee3d0ecfee",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/key",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"key"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #1 - Name",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 400 Bad Request', () => {",
+													"    pm.response.to.have.status(400)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"console.log('Create NewBox Step #1 (Name)')",
+													"",
+													"const responseJson = pm.response.json();",
+													"pm.test('Error message - validations.invalid ', () => {",
+													"    pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+													"    pm.expect(responseJson.error.errors[0].transKey).to.eql('validations.invalidBoxKey');",
+													"    pm.expect(responseJson.error.errors[0].field).to.eql('key');",
+													"})"
+												],
+												"type": "text/javascript",
+												"id": "bf6105cb-8317-4d3c-b604-cb2f26dcf722"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", pm.variables.replaceIn(\" \"))"
+												],
+												"type": "text/javascript",
+												"id": "276f4428-d061-4082-a379-b836c39e0aa2"
+											}
+										}
+									],
+									"id": "273aa450-35cb-4a6e-93ef-a946c4358697",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": null,\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "060709c1-baef-4c6f-b00b-3926dd5d6868"
+											}
+										}
+									],
+									"id": "454b42a2-8209-4e91-bcbf-b9e55be42cbd",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "19eebc30-7551-4e3a-9608-6390443f78b3"
+						},
+						{
+							"name": "AS-29 Delete Box",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "b2a3f049-9f5e-49e5-95eb-44d7f02a8033"
+											}
+										}
+									],
+									"id": "61d3d271-19f8-4f18-a84a-a638854d16d3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Box status",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "66cb87b0-c5ac-4943-9c90-b344bebb40cf"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"id": "dbeb0fa9-c79a-4349-9f79-972f865ae99f"
+											}
+										}
+									],
+									"id": "02741d92-576f-46bd-995a-58cdc18b94d4",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/{{key}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"{{key}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete box",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "85abc41a-4d90-4846-8617-8de9bd3ec527"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"id": "b9ec7e56-fca1-4f2f-b6d0-e72fe6cdef08"
+											}
+										}
+									],
+									"id": "2caf1249-5403-4727-afbc-92bf4219a112",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/{{key}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"{{key}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "b2265b0b-22f8-43c6-8ced-9b899158e0a3"
+											}
+										}
+									],
+									"id": "a38d5e29-d3fb-4c59-b25d-2893cfda256d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "346cc757-4fb6-4ba6-b0d6-f819ac23f5d0"
+						},
+						{
+							"name": "AS-32 Create Box (name - alphanumeric and backspace)",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "8d6ef3cb-65c4-40f7-a136-2ab86102c0db"
+											}
+										}
+									],
+									"id": "42d421f7-09ea-416e-8c77-ca5c86562f02",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreatBox - Key",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"key\", pm.response.text())",
+													"",
+													"",
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "533b6c0d-d052-4cce-8b92-dea0195e70dd"
+											}
+										}
+									],
+									"id": "d1a2936d-a07d-475b-b231-3b6b85b783c3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/key",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"key"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #1 - special symbols",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", \"test 123\")"
+												],
+												"type": "text/javascript",
+												"id": "7f061d58-ccad-45f1-840d-766b9cf33045"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200 OK', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"id": "d3893a0a-3817-43ca-b6f6-b44cbd7c2fa0"
+											}
+										}
+									],
+									"id": "a27b2b50-78b2-4423-9e32-37a56157fd4d",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": null,\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "3c4aff91-094c-4974-8bab-ccc71c29f38b"
+											}
+										}
+									],
+									"id": "057f82e2-e496-4ba5-91e2-009167fc2eb0",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "f5481810-8993-49aa-8123-d9d9a99233c0"
+						}
+					],
+					"id": "4f215171-3227-4eba-baef-d08b17e2512c"
+				}
+			],
+			"id": "baa1a44f-cf60-4aff-85ef-3f468a82a94f"
+		},
+		{
+			"name": "Negative",
+			"item": [
+				{
+					"name": "#001 Incorrect Login / Password",
+					"item": [
+						{
+							"name": "AS-15 Login (no login & no password)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code = 400 (Bad request)', () => {",
+											"    pm.response.to.have.status(400)",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 250ms\", () => {",
+											"  pm.expect(pm.response.responseTime).to.be.below(250);",
+											"});",
+											"",
+											"const responseJson = pm.response.json();",
+											"pm.test('Error message - validations.invalid / password', () => {",
+											"  pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+											"  pm.expect(responseJson.error.errors[0].field).to.eql('email');",
+											"  })"
+										],
+										"type": "text/javascript",
+										"id": "90708070-f15e-48eb-a9c1-4e7538bc7bd9"
+									}
+								}
+							],
+							"id": "fbc2fb10-4543-4786-8bdf-a42b8b86bb02",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"\",\n  \"password\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/login?redirect=%2F",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									],
+									"query": [
+										{
+											"key": "redirect",
+											"value": "%2F"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AS-12 Login (no login & correct password)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code = 400 (Bad request)', () => {",
+											"    pm.response.to.have.status(400)",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 250ms\", () => {",
+											"  pm.expect(pm.response.responseTime).to.be.below(250);",
+											"});",
+											"",
+											"const responseJson = pm.response.json();",
+											"pm.test('Error message - validations.invalid / password', () => {",
+											"  pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+											"  pm.expect(responseJson.error.errors[0].field).to.eql('email');",
+											"  pm.expect(responseJson.error.errors[0].field).to.eql('email');",
+											"  })"
+										],
+										"type": "text/javascript",
+										"id": "6f4c8e58-2128-48d8-a9ea-54d54eced06b"
+									}
+								}
+							],
+							"id": "1b2885e4-3724-4fda-aa05-124021d2ac42",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"\",\n  \"password\": \"{{password}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/login?redirect=%2F",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									],
+									"query": [
+										{
+											"key": "redirect",
+											"value": "%2F"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AS-9 Login (correct login & no password)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code = 400 (Bad request)', () => {",
+											"    pm.response.to.have.status(400)",
+											"});",
+											"",
+											"pm.test('Response time is less than 250ms', () => {",
+											"  pm.expect(pm.response.responseTime).to.be.below(250);",
+											"});",
+											"",
+											"const responseJson = pm.response.json();",
+											"pm.test('Error message - validations.invalid / password', () => {",
+											"  pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+											"  pm.expect(responseJson.error.errors[0].field).to.eql('password');",
+											"  })",
+											""
+										],
+										"type": "text/javascript",
+										"id": "9595a29e-3064-41fb-882a-439f5f25ba3d"
+									}
+								}
+							],
+							"id": "733de4be-3986-4801-bbaa-0fa14c418b5c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/login?redirect=%2F",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									],
+									"query": [
+										{
+											"key": "redirect",
+											"value": "%2F"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AS-16 Login (incorrect login & correct password)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code = 404 (Not Found)', () => {",
+											"    pm.response.to.have.status(404)",
+											"});",
+											"",
+											"pm.test(\"Response time is less than 250ms\", () => {",
+											"  pm.expect(pm.response.responseTime).to.be.below(250);",
+											"});",
+											"  const responseJson = pm.response.json();",
+											"  pm.test('Error message - USER_NOT_FOUND', () => {",
+											"  pm.expect(responseJson.error.message).to.eql('USER_NOT_FOUND')",
+											"  });"
+										],
+										"type": "text/javascript",
+										"id": "85a93b3f-4bee-49b9-8099-bf1b6e3e5c4b"
+									}
+								}
+							],
+							"id": "0b1d3c56-ff8c-41ee-8236-f9d4456d47f7",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"{{email_incorrect}}\",\n  \"password\": \"{{password}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/login?redirect=%2F",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									],
+									"query": [
+										{
+											"key": "redirect",
+											"value": "%2F"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AS-11 Login (correct login & incorrect password)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Status code = 400 (Bad request)', () => {",
+											"    pm.response.to.have.status(400)",
+											"});",
+											"",
+											"pm.test('Response time is less than 250ms', () => {",
+											"  pm.expect(pm.response.responseTime).to.be.below(250);",
+											"});",
+											"",
+											"const responseJson = pm.response.json();",
+											"pm.test('Error message - validations.invalid / password', () => {",
+											"  pm.expect(responseJson.error.message).to.eql('INVALID_USERNAME_OR_PASSWORD');",
+											"  })",
+											""
+										],
+										"type": "text/javascript",
+										"id": "632d2b4b-b4b9-4eca-9630-b93376fb7128"
+									}
+								}
+							],
+							"id": "2d3fefc6-3b2d-46a2-aedf-3d3fba8e237e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password_incorrect}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/login?redirect=%2F",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									],
+									"query": [
+										{
+											"key": "redirect",
+											"value": "%2F"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "ae3d027a-8647-4b0c-b4e5-b857523f93fd"
+				},
+				{
+					"name": "#002 Create box",
+					"item": [
+						{
+							"name": "AS-17 Create box (no key)",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "e9b22d9a-1271-4a41-8750-158164e11d1f"
+											}
+										}
+									],
+									"id": "55014841-126f-4047-82df-bee074805c79",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreatBox - Key (no key)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"key\", '')",
+													"",
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "97af7b3f-fe7c-462b-a428-3c4c8410cf4b"
+											}
+										}
+									],
+									"id": "7f9731b0-0681-43d4-ab7e-7ea9dbdb7a6f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/key",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"key"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #1 (no key / with name)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 400 Bad Request', () => {",
+													"    pm.response.to.have.status(400)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"console.log('Create NewBox Step #1 (Name)')",
+													"",
+													"const responseJson = pm.response.json();",
+													"pm.test('Error message - validations.invalid ', () => {",
+													"    pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+													"    pm.expect(responseJson.error.errors[1].transKey).to.eql('validations.invalidBoxKey');",
+													"    pm.expect(responseJson.error.errors[0].field).to.eql('key');",
+													"    pm.expect(responseJson.error.errors[0].params.min).to.equal(1);",
+													"})"
+												],
+												"type": "text/javascript",
+												"id": "73fdb3e6-05af-4d02-9487-5fe58da8b25f"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
+												],
+												"type": "text/javascript",
+												"id": "6d2aa8ca-9e90-4555-8e85-81fcce8aba53"
+											}
+										}
+									],
+									"id": "60fcec78-813f-4173-bf44-a9b9305e9f27",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": null,\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "b4ce3d83-f37f-4487-8f90-f1cd603a4c66"
+											}
+										}
+									],
+									"id": "9526d468-b00b-4902-bfad-3cde18517605",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "518fd1b2-eaa7-4255-93c3-3e5f2d0f4924"
+						},
+						{
+							"name": "AS-18 Create box (no name)",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "3553a62a-06bc-49b1-854a-0373f8140e8e"
+											}
+										}
+									],
+									"id": "0b4744a2-2a44-40f7-9868-2d02b1e89ca3",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreatBox - Key",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"key\", pm.response.text())",
+													"",
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "4cb4f174-4dec-434c-99bb-ce158e83ed21"
+											}
+										}
+									],
+									"id": "ff9217b6-a009-4bf3-b784-f37bf977aa47",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/key",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"key"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #1 (no name)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 400 Bad Request', () => {",
+													"    pm.response.to.have.status(400)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"console.log('Create NewBox Step #1 (Name)')",
+													"",
+													"const responseJson = pm.response.json();",
+													"pm.test('Error message - validations.invalid ', () => {",
+													"    pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+													"    pm.expect(responseJson.error.errors[1].transKey).to.eql('validations.minCharLength');",
+													"    pm.expect(responseJson.error.errors[1].field).to.eql('name');",
+													"    pm.expect(responseJson.error.errors[1].params.min).to.eql(1);",
+													"})"
+												],
+												"type": "text/javascript",
+												"id": "0a50ad54-09b5-4ec4-9490-77471aafc4fd"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "0872016a-3814-48da-a283-6960c7b5d853"
+											}
+										}
+									],
+									"id": "421e1e43-e653-4041-a986-9013e26389e2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": null,\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "8904df50-9dc2-4dd2-8443-ebc49d727510"
+											}
+										}
+									],
+									"id": "885eb033-3bb0-4eb6-be39-35b0496bd4e2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "15678612-e67e-4a48-a4d5-4e06cd54384c"
+						},
+						{
+							"name": "AS-19 Create box (no key & no name)",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "756e409c-ad7c-4bf5-a10d-9b9056591b55"
+											}
+										}
+									],
+									"id": "9fca8b47-bbfd-4c01-8ffe-3b3b3fba9eeb",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreatBox - Key (no key / no name)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// pm.environment.set(\"key\", pm.response.text())",
+													"",
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "d24c9e1e-3173-44cd-bdac-b2f3742b1de3"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"key\", '')"
+												],
+												"type": "text/javascript",
+												"id": "307610ba-ab89-4bfe-a827-d966ae1514f1"
+											}
+										}
+									],
+									"id": "de83aeaa-c24c-46cb-8b85-a85d9109c23f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/key",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"key"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #1  (no key / no name)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 400 Bad Request', () => {",
+													"    pm.response.to.have.status(400)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"console.log('Create NewBox Step #1 (Name)')",
+													"",
+													"const responseJson = pm.response.json();",
+													"pm.test('Error message - Validations Name invalid ', () => {",
+													"    pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+													"    pm.expect(responseJson.error.errors[1].transKey).to.eql('validations.minCharLength');",
+													"    pm.expect(responseJson.error.errors[1].field).to.eql('name');",
+													"})",
+													"pm.test('Error message - Validations Key invalid ', () => {",
+													"    pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+													"    pm.expect(responseJson.error.errors[3].transKey).to.eql('validations.invalidBoxKey');",
+													"    pm.expect(responseJson.error.errors[3].field).to.eql('key');",
+													"})"
+												],
+												"type": "text/javascript",
+												"id": "54aa07c1-6e1a-4970-9d64-0289dc9af65b"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "2042b8e5-5e0c-4155-a0db-4f824b045c55"
+											}
+										}
+									],
+									"id": "b076de1a-b539-4e95-90bf-1bb41f26a55b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": null,\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "40401dbf-2633-4e35-8edb-561213706259"
+											}
+										}
+									],
+									"id": "ab44fbb3-a3fd-4c06-8c25-b694a3aa1aec",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "a8cc16c0-8568-4fee-8d5f-ccc947e02e9f"
+						},
+						{
+							"name": "AS-21 Create Box (key > 64)",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "85402d13-2733-4dab-b704-aea6d524407f"
+											}
+										}
+									],
+									"id": "76b72812-2aff-40fb-be24-c73ed96626ea",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreatBox - Key (>64)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// max key lenght is 64",
+													"pm.environment.set(\"key\", 'qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm')",
+													"",
+													"",
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "f408db64-363c-4ab6-9cb1-8d4988f1db51"
+											}
+										}
+									],
+									"id": "f8c1eecd-a4a1-4eb2-9bc4-4d52cd92f770",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/key",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"key"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #1 - Name",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 400 Bad Request', () => {",
+													"    pm.response.to.have.status(400)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"console.log('Create NewBox Step #1 (Name)')",
+													"",
+													"const responseJson = pm.response.json();",
+													"pm.test('Error message - validations.invalid ', () => {",
+													"    pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+													"    pm.expect(responseJson.error.errors[0].transKey).to.eql('validations.maxCharLength');",
+													"    pm.expect(responseJson.error.errors[0].field).to.eql('key');",
+													"    pm.expect(responseJson.error.errors[0].params.max).to.equal(64);",
+													"})"
+												],
+												"type": "text/javascript",
+												"id": "d44a763d-9ab5-4e84-826f-443e62a4e9c7"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
+												],
+												"type": "text/javascript",
+												"id": "6b30f195-a830-4cfc-8027-6e1309158176"
+											}
+										}
+									],
+									"id": "00b347dd-bac6-4418-9403-b733b04573d5",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": null,\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "7b4d5fd6-1c83-4db8-809e-69f9a983dea0"
+											}
+										}
+									],
+									"id": "c86fb664-8b14-4e0f-905f-38390bb0a2e8",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "32bef22b-092d-4aa7-bebf-7529f1e93859"
+						},
+						{
+							"name": "AS-20 Create Box (name > 256)",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "1211da56-476c-4e3c-a7cc-3fc2cb80992a"
+											}
+										}
+									],
+									"id": "2b7764c1-79f7-40b0-870c-605716add844",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreatBox - Key",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"key\", pm.response.text())",
+													"",
+													"",
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "6234676a-4366-42ec-af1a-605dec8f277a"
+											}
+										}
+									],
+									"id": "b6fed7be-b171-4823-8e44-9e44c03f0bc2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/key",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"key"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #1 - long name (> 256)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 400 Bad Request', () => {",
+													"    pm.response.to.have.status(400)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"console.log('Create NewBox Step #1 (Name)')",
+													"",
+													"const responseJson = pm.response.json();",
+													"pm.test('Error message - validations.invalid ', () => {",
+													"    pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+													"    pm.expect(responseJson.error.errors[0].transKey).to.eql('validations.maxCharLength');",
+													"    pm.expect(responseJson.error.errors[0].field).to.eql('name');",
+													"    pm.expect(responseJson.error.errors[0].params.max).to.equal(256);",
+													"})"
+												],
+												"type": "text/javascript",
+												"id": "8ebea964-3486-4f6c-9d74-08015f9cf129"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", \"qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcv\")"
+												],
+												"type": "text/javascript",
+												"id": "f1f98e5d-2019-48cf-8f60-bbd0369dac01"
+											}
+										}
+									],
+									"id": "69b1f350-6ce1-49c4-a3f5-1d5310e18275",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": null,\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "42efabb4-5625-4eec-8bc3-10e0db50a27e"
+											}
+										}
+									],
+									"id": "5dafc655-c823-4905-bc82-28bd46f33b69",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "631c6281-2f1e-41bb-ac48-bcff085cd496"
+						},
+						{
+							"name": "AS-22 Create box (name - special symbols without quotes)",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "9f6f2156-c491-43da-abe9-cb429e57874b"
+											}
+										}
+									],
+									"id": "e6fc91c8-5e37-464b-bc5c-a0b1f1bda816",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreatBox - Key",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"key\", pm.response.text())",
+													"",
+													"",
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "ceb5d1e8-2e41-4213-ad9b-822f8b8bb8b9"
+											}
+										}
+									],
+									"id": "d9c34d5d-c833-4cd8-95cb-dd7d6580596a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/key",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"key"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #1 - special symbols",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", \"±!@#$%^&*(){}:[]:~<>?\")"
+												],
+												"type": "text/javascript",
+												"id": "e58906b8-3108-42c2-8609-71b8d1907147"
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200 OK', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													""
+												],
+												"type": "text/javascript",
+												"id": "5b9c9808-1f1b-4ce4-a961-30cceaa34d0d"
+											}
+										}
+									],
+									"id": "eb3e9b89-ff15-432d-b211-c163e40a9327",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": null,\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "cacc6bc3-fb42-400e-b4b9-6e5df36de8a0"
+											}
+										}
+									],
+									"id": "65994890-7720-48a9-93d6-c3669b36060f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "2b61e10b-b58b-4df5-80bd-908fd8d65d5f"
+						},
+						{
+							"name": "AS-23 Create box  (key - special symbols withoud quotes)",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "6412d932-7e5f-4918-9b51-5fb7cb423813"
+											}
+										}
+									],
+									"id": "821aad83-94f9-4994-b67c-8c4f6eea70a4",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreatBox - Key (special symbols)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// max key lenght is 64",
+													"pm.environment.set(\"key\", '§±!@#$%^&*()_+-=:;\\|~`<>?/')",
+													"",
+													"",
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "ec5e7f68-7b4c-483b-8f66-d208f38c392d"
+											}
+										}
+									],
+									"id": "7f4860db-3217-4091-9b6e-2e4a571815b7",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/key",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"key"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #1 - Name",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 400 Bad Request', () => {",
+													"    pm.response.to.have.status(400)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"console.log('Create NewBox Step #1 (Name)')",
+													"",
+													"const responseJson = pm.response.json();",
+													"pm.test('Error message - validations.invalid ', () => {",
+													"    pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+													"    pm.expect(responseJson.error.errors[0].transKey).to.eql('validations.invalidBoxKey');",
+													"    pm.expect(responseJson.error.errors[0].field).to.eql('key');",
+													"})"
+												],
+												"type": "text/javascript",
+												"id": "f6a7eff6-089f-480a-a9ae-e7327127d625"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
+												],
+												"type": "text/javascript",
+												"id": "00bba560-4ba2-4b3e-a005-fe42149d5bef"
+											}
+										}
+									],
+									"id": "5be07120-18ec-4c56-a98f-7136c235c876",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": null,\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "e19471ad-4e2e-4cbb-ad94-97472d5ed7e1"
+											}
+										}
+									],
+									"id": "02fdff26-bafb-4be2-be1f-c1c9461029d1",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "858f4d7b-c545-417a-aace-d617bf5cd562"
+						},
+						{
+							"name": "AS-31 Create Box (key - backspases > 6)",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "c5430cd5-cbf3-499f-9adc-64c42d674e1b"
+											}
+										}
+									],
+									"id": "dd46f2e5-d5ac-4e69-a8d1-b330167de0d2",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreatBox - Key (special symbols)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// max key lenght is 64",
+													"pm.environment.set(\"key\", 'test 123')",
+													"",
+													"",
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "ffd1b331-6022-499c-9ef2-b80186e058a8"
+											}
+										}
+									],
+									"id": "887d5225-c013-4b6c-91c4-51a46e2b08fc",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/key",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"key"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #1 - Name",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 400 Bad Request', () => {",
+													"    pm.response.to.have.status(400)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"console.log('Create NewBox Step #1 (Name)')",
+													"",
+													"const responseJson = pm.response.json();",
+													"pm.test('Error message - validations.invalid ', () => {",
+													"    pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+													"    pm.expect(responseJson.error.errors[0].transKey).to.eql('validations.invalidBoxKey');",
+													"    pm.expect(responseJson.error.errors[0].field).to.eql('key');",
+													"})"
+												],
+												"type": "text/javascript",
+												"id": "3eb60daa-ac1d-4a5e-8ef2-2617c9db55e4"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
+												],
+												"type": "text/javascript",
+												"id": "926bafb8-e418-4490-8c00-4777d0e47aaf"
+											}
+										}
+									],
+									"id": "148afddc-f181-4114-9ed7-c6631245d714",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": null,\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "a756fefb-5dcb-49de-aeeb-712e00ef9963"
+											}
+										}
+									],
+									"id": "89f6fc85-115b-4035-914c-3b647297d9ac",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "d8fea91a-4eec-4039-9a10-1d47c2136f4f"
+						},
+						{
+							"name": "AS-24 Create Box (key - alphanumeric and backspace)",
+							"item": [
+								{
+									"name": "Login (Correct login & password)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"pm.test(\"Login responce body is OK\", () => {",
+													"  const responseJson = pm.response.json();",
+													"  pm.expect(responseJson.id).to.eql(3000051);",
+													"  pm.expect(responseJson.accountType).to.eql('email');",
+													"  pm.expect(responseJson.username).to.eql('Roman');",
+													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "2f6ba2c2-dfae-4ee2-9c18-4ebcd5affafe"
+											}
+										}
+									],
+									"id": "38994955-26ba-4144-8fe1-ab125ea90b1a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/login?redirect=%2F",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"login"
+											],
+											"query": [
+												{
+													"key": "redirect",
+													"value": "%2F"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "CreatBox - Key (special symbols)",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// max key lenght is 64",
+													"pm.environment.set(\"key\", '       ')",
+													"",
+													"",
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});"
+												],
+												"type": "text/javascript",
+												"id": "ef3f00c9-826d-4221-b450-cc29c7da6043"
+											}
+										}
+									],
+									"id": "899b727d-6dcd-4be0-ba58-79f998254459",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box/key",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box",
+												"key"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create NewBox Step #1 - Name",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 400 Bad Request', () => {",
+													"    pm.response.to.have.status(400)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"console.log('Create NewBox Step #1 (Name)')",
+													"",
+													"const responseJson = pm.response.json();",
+													"pm.test('Error message - validations.invalid ', () => {",
+													"    pm.expect(responseJson.error.message).to.eql('validations.invalid');",
+													"    pm.expect(responseJson.error.errors[0].transKey).to.eql('validations.invalidBoxKey');",
+													"    pm.expect(responseJson.error.errors[0].field).to.eql('key');",
+													"})"
+												],
+												"type": "text/javascript",
+												"id": "2dff5a48-37ce-450c-a463-8f215735f299"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
+												],
+												"type": "text/javascript",
+												"id": "788a68fa-45f5-4217-b4ea-164b8936c0f9"
+											}
+										}
+									],
+									"id": "54c342a6-0138-4b96-9a2f-86c1a7ee94ad",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": null,\n  \"name\": \"{{name}}\",\n  \"key\": \"{{key}}\",\n  \"picture\": null,\n  \"usePost\": false,\n  \"useCashLimit\": null,\n  \"cashLimit\": null,\n  \"cashLimitCurrency\": null,\n  \"useWish\": true,\n  \"useCircleDraw\": null,\n  \"isInviteAfterDraw\": null,\n  \"isArchived\": null,\n  \"createAdminCard\": null,\n  \"isCreated\": null,\n  \"useNames\": true,\n  \"isPhoneRequired\": false,\n  \"logo\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/box",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"box"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test('Status code = 200', () => {",
+													"    pm.response.to.have.status(200)",
+													"});",
+													"",
+													"pm.test(\"Response time is less than 250ms\", () => {",
+													"  pm.expect(pm.response.responseTime).to.be.below(250);",
+													"});",
+													"",
+													"// system clean up ",
+													"pm.environment.set(\"key\", '')",
+													"pm.environment.set(\"name\", '')"
+												],
+												"type": "text/javascript",
+												"id": "15545880-c733-4669-886b-8fdaa3e74bcd"
+											}
+										}
+									],
+									"id": "cd6f53c1-7fb7-4607-884f-1d3775153990",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\"password\":\"{{password}}\"}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "78ad497c-b394-4ef2-86f3-3159cff1148a"
+						}
+					],
+					"id": "93b3df79-53ad-47af-b7f8-4bcbff61d76a"
+				}
+			],
+			"id": "98220a93-7e73-477b-b51e-14eacfdcf756"
+		}
+	]
+}
