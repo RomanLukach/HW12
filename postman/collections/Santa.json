@@ -21,14 +21,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "39188c44-c0d2-47e1-847a-10cd79872e1a",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -38,8 +39,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "39188c44-c0d2-47e1-847a-10cd79872e1a"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -83,6 +83,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "61650b4d-33d4-472e-976b-1253526d8ed1",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
@@ -97,23 +98,22 @@
 													"  pm.expect(responseJson.verifyEmail).to.eql(null);",
 													"}); ",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													""
 												],
-												"type": "text/javascript",
-												"id": "61650b4d-33d4-472e-976b-1253526d8ed1"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "e96f33c0-6bb4-44ad-96c2-f4e215e71834",
 												"exec": [
 													"pm.environment.set(\"password_new\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
 												],
-												"type": "text/javascript",
-												"id": "e96f33c0-6bb4-44ad-96c2-f4e215e71834"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -152,6 +152,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "d5631190-0d79-4d30-acfc-1daf8cdcf33f",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
@@ -166,22 +167,21 @@
 													"  pm.expect(responseJson.verifyEmail).to.eql(null);",
 													"}); ",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "d5631190-0d79-4d30-acfc-1daf8cdcf33f"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "c78a716b-4f4d-452e-ab84-13dcec3bde64",
 												"exec": [
 													""
 												],
-												"type": "text/javascript",
-												"id": "c78a716b-4f4d-452e-ab84-13dcec3bde64"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -220,17 +220,17 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "f4708120-c57f-4994-8377-e2c2c76b49f3",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "f4708120-c57f-4994-8377-e2c2c76b49f3"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -280,14 +280,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "9477aacf-927e-4ba2-ac21-020aeca9aac6",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -297,8 +298,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "9477aacf-927e-4ba2-ac21-020aeca9aac6"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -342,6 +342,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "8c198a60-3f7e-4199-b5ef-640b49870f4f",
 												"exec": [
 													"pm.environment.set(\"key\", pm.response.text())",
 													"",
@@ -349,12 +350,11 @@
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "8c198a60-3f7e-4199-b5ef-640b49870f4f"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -393,32 +393,32 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "6dc994b4-ee1a-4a08-9cfb-eb50bd6e1e93",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// console.log('Create NewBox Step #1 (Name)')",
 													"// var jsonData = JSON.parse(responseBody);",
 													"// console.log(jsonData.box.name)",
 													"// console.log(jsonData.box.key)"
 												],
-												"type": "text/javascript",
-												"id": "6dc994b4-ee1a-4a08-9cfb-eb50bd6e1e93"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "2f239472-d430-4714-a978-5b8d22f4b73a",
 												"exec": [
 													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
 												],
-												"type": "text/javascript",
-												"id": "2f239472-d430-4714-a978-5b8d22f4b73a"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -456,31 +456,31 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "da8e2385-d7a7-4e60-9f58-a2f1cebe95e1",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// console.log('Create NewBox Step #2 (Cover)')",
 													"// var jsonData = JSON.parse(responseBody);",
 													"// console.log(jsonData.box.picture)"
 												],
-												"type": "text/javascript",
-												"id": "da8e2385-d7a7-4e60-9f58-a2f1cebe95e1"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "6bbdc512-7cd3-48ff-96ab-ff5d83012fa4",
 												"exec": [
 													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
 												],
-												"type": "text/javascript",
-												"id": "6bbdc512-7cd3-48ff-96ab-ff5d83012fa4"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -518,14 +518,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "cdace0ae-7465-4624-aaed-bef2bf8ce597",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// console.log('Create NewBox Step #3 (Cost)')",
 													"// var jsonData = JSON.parse(responseBody);",
@@ -533,18 +534,17 @@
 													"// console.log(jsonData.box.cashLimit)",
 													"// console.log(jsonData.box.cashLimitCurrency)"
 												],
-												"type": "text/javascript",
-												"id": "cdace0ae-7465-4624-aaed-bef2bf8ce597"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "64c517bd-5d50-49a4-9f3e-1a071afcea0c",
 												"exec": [
 													""
 												],
-												"type": "text/javascript",
-												"id": "64c517bd-5d50-49a4-9f3e-1a071afcea0c"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -582,14 +582,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "cc384ced-ad36-4a51-9823-840a06177602",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// console.log('Create NewBox Step #4 (Additional)')",
 													"// var jsonData = JSON.parse(responseBody);",
@@ -598,18 +599,17 @@
 													"// console.log(jsonData.box.useNames)",
 													"// console.log(jsonData.box.isPhoneRequired)"
 												],
-												"type": "text/javascript",
-												"id": "cc384ced-ad36-4a51-9823-840a06177602"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "971aeb3f-76bc-4f8e-93a4-bca4ba5677eb",
 												"exec": [
 													""
 												],
-												"type": "text/javascript",
-												"id": "971aeb3f-76bc-4f8e-93a4-bca4ba5677eb"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -647,14 +647,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "b2ddba8b-0570-4423-a1e4-77350d21f3c1",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// console.log('Box adjustment')",
 													"// var jsonData = JSON.parse(responseBody);",
@@ -669,18 +670,17 @@
 													"// console.log(jsonData.box.useNames)",
 													"// console.log(jsonData.box.isPhoneRequired)"
 												],
-												"type": "text/javascript",
-												"id": "b2ddba8b-0570-4423-a1e4-77350d21f3c1"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "8a7878af-dabd-4f81-add7-59137f69f40a",
 												"exec": [
 													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
 												],
-												"type": "text/javascript",
-												"id": "8a7878af-dabd-4f81-add7-59137f69f40a"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -718,27 +718,27 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "7d2e2bbf-7d66-47a1-aeef-54c1d58cd33d",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "7d2e2bbf-7d66-47a1-aeef-54c1d58cd33d"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "78187225-8631-40e4-9fca-f80d01db90d2",
 												"exec": [
 													""
 												],
-												"type": "text/javascript",
-												"id": "78187225-8631-40e4-9fca-f80d01db90d2"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -777,27 +777,27 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "1cc14f50-1448-4ead-b7df-5436a29d69fd",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "1cc14f50-1448-4ead-b7df-5436a29d69fd"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "937a10a9-97a7-4032-b930-14c950c1d602",
 												"exec": [
 													""
 												],
-												"type": "text/javascript",
-												"id": "937a10a9-97a7-4032-b930-14c950c1d602"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -836,21 +836,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "8058605b-2cde-4812-aef8-4c6b240d124a",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"// pm.environment.set(\"key\", '')",
 													"// pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "8058605b-2cde-4812-aef8-4c6b240d124a"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -894,14 +894,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "38530e8b-3158-429f-9e4f-b2ae557ce5c0",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -911,8 +912,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "38530e8b-3158-429f-9e4f-b2ae557ce5c0"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -956,14 +956,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "d79a4527-b357-4449-85d8-5beac79bf04b",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// console.log('Box adjustment')",
 													"// var jsonData = JSON.parse(responseBody);",
@@ -978,18 +979,17 @@
 													"// console.log(jsonData.box.useNames)",
 													"// console.log(jsonData.box.isPhoneRequired)"
 												],
-												"type": "text/javascript",
-												"id": "d79a4527-b357-4449-85d8-5beac79bf04b"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "630702da-7ecf-4823-b532-f26288789a19",
 												"exec": [
 													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
 												],
-												"type": "text/javascript",
-												"id": "630702da-7ecf-4823-b532-f26288789a19"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1027,21 +1027,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "fd023f73-f03c-4760-837c-421224201022",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "fd023f73-f03c-4760-837c-421224201022"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1085,14 +1085,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "a93ce3d7-5431-40e5-8d21-26c0c461ffed",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -1102,8 +1103,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "a93ce3d7-5431-40e5-8d21-26c0c461ffed"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1147,6 +1147,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "3d2563aa-4076-449e-b001-648cc03d3170",
 												"exec": [
 													"// max key lenght is 64",
 													"pm.environment.set(\"key\", 'QWER123±!@')",
@@ -1156,12 +1157,11 @@
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "3d2563aa-4076-449e-b001-648cc03d3170"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1200,14 +1200,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "c9691a05-51d0-49a7-98e2-06fbd5f06774",
 												"exec": [
 													"pm.test('Status code = 400 Bad Request', () => {",
 													"    pm.response.to.have.status(400)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"console.log('Create NewBox Step #1 (Name)')",
 													"",
@@ -1218,18 +1219,17 @@
 													"    pm.expect(responseJson.error.errors[0].field).to.eql('key');",
 													"})"
 												],
-												"type": "text/javascript",
-												"id": "c9691a05-51d0-49a7-98e2-06fbd5f06774"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "b0f66b5c-9a67-4dad-830a-b1cd68e3ac79",
 												"exec": [
 													"pm.environment.set(\"name\", pm.variables.replaceIn(\" \"))"
 												],
-												"type": "text/javascript",
-												"id": "b0f66b5c-9a67-4dad-830a-b1cd68e3ac79"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1267,21 +1267,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "3bca159d-f4ca-4669-9f5a-05b5fc291c7f",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "3bca159d-f4ca-4669-9f5a-05b5fc291c7f"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1325,14 +1325,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "0b3c93bd-e00f-4c7d-add6-15aecf06e245",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -1342,8 +1343,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "0b3c93bd-e00f-4c7d-add6-15aecf06e245"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1387,6 +1387,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "19556756-0ddd-4316-a536-fab4485aba77",
 												"exec": [
 													"// max key lenght is 64",
 													"pm.environment.set(\"key\", 'QWER123±!@')",
@@ -1396,12 +1397,11 @@
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "19556756-0ddd-4316-a536-fab4485aba77"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1440,14 +1440,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "bf6105cb-8317-4d3c-b604-cb2f26dcf722",
 												"exec": [
 													"pm.test('Status code = 400 Bad Request', () => {",
 													"    pm.response.to.have.status(400)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"console.log('Create NewBox Step #1 (Name)')",
 													"",
@@ -1458,18 +1459,17 @@
 													"    pm.expect(responseJson.error.errors[0].field).to.eql('key');",
 													"})"
 												],
-												"type": "text/javascript",
-												"id": "bf6105cb-8317-4d3c-b604-cb2f26dcf722"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "276f4428-d061-4082-a379-b836c39e0aa2",
 												"exec": [
 													"pm.environment.set(\"name\", pm.variables.replaceIn(\" \"))"
 												],
-												"type": "text/javascript",
-												"id": "276f4428-d061-4082-a379-b836c39e0aa2"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1507,21 +1507,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "060709c1-baef-4c6f-b00b-3926dd5d6868",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "060709c1-baef-4c6f-b00b-3926dd5d6868"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1565,14 +1565,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "b2a3f049-9f5e-49e5-95eb-44d7f02a8033",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -1582,8 +1583,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "b2a3f049-9f5e-49e5-95eb-44d7f02a8033"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1627,27 +1627,27 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "66cb87b0-c5ac-4943-9c90-b344bebb40cf",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "66cb87b0-c5ac-4943-9c90-b344bebb40cf"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "dbeb0fa9-c79a-4349-9f79-972f865ae99f",
 												"exec": [
 													""
 												],
-												"type": "text/javascript",
-												"id": "dbeb0fa9-c79a-4349-9f79-972f865ae99f"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1686,27 +1686,27 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "85abc41a-4d90-4846-8617-8de9bd3ec527",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "85abc41a-4d90-4846-8617-8de9bd3ec527"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "b9ec7e56-fca1-4f2f-b6d0-e72fe6cdef08",
 												"exec": [
 													""
 												],
-												"type": "text/javascript",
-												"id": "b9ec7e56-fca1-4f2f-b6d0-e72fe6cdef08"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1745,21 +1745,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "b2265b0b-22f8-43c6-8ced-9b899158e0a3",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "b2265b0b-22f8-43c6-8ced-9b899158e0a3"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1803,14 +1803,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "8d6ef3cb-65c4-40f7-a136-2ab86102c0db",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -1820,8 +1821,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "8d6ef3cb-65c4-40f7-a136-2ab86102c0db"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1865,6 +1865,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "533b6c0d-d052-4cce-8b92-dea0195e70dd",
 												"exec": [
 													"pm.environment.set(\"key\", pm.response.text())",
 													"",
@@ -1873,12 +1874,11 @@
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "533b6c0d-d052-4cce-8b92-dea0195e70dd"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1917,28 +1917,28 @@
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "7f061d58-ccad-45f1-840d-766b9cf33045",
 												"exec": [
 													"pm.environment.set(\"name\", \"test 123\")"
 												],
-												"type": "text/javascript",
-												"id": "7f061d58-ccad-45f1-840d-766b9cf33045"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "test",
 											"script": {
+												"id": "d3893a0a-3817-43ca-b6f6-b44cbd7c2fa0",
 												"exec": [
 													"pm.test('Status code = 200 OK', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													""
 												],
-												"type": "text/javascript",
-												"id": "d3893a0a-3817-43ca-b6f6-b44cbd7c2fa0"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -1976,21 +1976,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "3c4aff91-094c-4974-8bab-ccc71c29f38b",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "3c4aff91-094c-4974-8bab-ccc71c29f38b"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -2043,14 +2043,15 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "90708070-f15e-48eb-a9c1-4e7538bc7bd9",
 										"exec": [
 											"pm.test('Status code = 400 (Bad request)', () => {",
 											"    pm.response.to.have.status(400)",
 											"});",
 											"",
-											"pm.test(\"Response time is less than 250ms\", () => {",
-											"  pm.expect(pm.response.responseTime).to.be.below(250);",
-											"});",
+											"// pm.test(\"Response time is less than 250ms\", () => {",
+											"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+											"// });",
 											"",
 											"const responseJson = pm.response.json();",
 											"pm.test('Error message - validations.invalid / password', () => {",
@@ -2058,8 +2059,7 @@
 											"  pm.expect(responseJson.error.errors[0].field).to.eql('email');",
 											"  })"
 										],
-										"type": "text/javascript",
-										"id": "90708070-f15e-48eb-a9c1-4e7538bc7bd9"
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -2103,14 +2103,15 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "6f4c8e58-2128-48d8-a9ea-54d54eced06b",
 										"exec": [
 											"pm.test('Status code = 400 (Bad request)', () => {",
 											"    pm.response.to.have.status(400)",
 											"});",
 											"",
-											"pm.test(\"Response time is less than 250ms\", () => {",
-											"  pm.expect(pm.response.responseTime).to.be.below(250);",
-											"});",
+											"// pm.test(\"Response time is less than 250ms\", () => {",
+											"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+											"// });",
 											"",
 											"const responseJson = pm.response.json();",
 											"pm.test('Error message - validations.invalid / password', () => {",
@@ -2119,8 +2120,7 @@
 											"  pm.expect(responseJson.error.errors[0].field).to.eql('email');",
 											"  })"
 										],
-										"type": "text/javascript",
-										"id": "6f4c8e58-2128-48d8-a9ea-54d54eced06b"
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -2164,14 +2164,15 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "9595a29e-3064-41fb-882a-439f5f25ba3d",
 										"exec": [
 											"pm.test('Status code = 400 (Bad request)', () => {",
 											"    pm.response.to.have.status(400)",
 											"});",
 											"",
-											"pm.test('Response time is less than 250ms', () => {",
-											"  pm.expect(pm.response.responseTime).to.be.below(250);",
-											"});",
+											"// pm.test(\"Response time is less than 250ms\", () => {",
+											"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+											"// });",
 											"",
 											"const responseJson = pm.response.json();",
 											"pm.test('Error message - validations.invalid / password', () => {",
@@ -2180,8 +2181,7 @@
 											"  })",
 											""
 										],
-										"type": "text/javascript",
-										"id": "9595a29e-3064-41fb-882a-439f5f25ba3d"
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -2225,21 +2225,22 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "85a93b3f-4bee-49b9-8099-bf1b6e3e5c4b",
 										"exec": [
 											"pm.test('Status code = 404 (Not Found)', () => {",
 											"    pm.response.to.have.status(404)",
 											"});",
 											"",
-											"pm.test(\"Response time is less than 250ms\", () => {",
-											"  pm.expect(pm.response.responseTime).to.be.below(250);",
-											"});",
+											"// pm.test(\"Response time is less than 250ms\", () => {",
+											"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+											"// });",
+											"",
 											"  const responseJson = pm.response.json();",
 											"  pm.test('Error message - USER_NOT_FOUND', () => {",
 											"  pm.expect(responseJson.error.message).to.eql('USER_NOT_FOUND')",
 											"  });"
 										],
-										"type": "text/javascript",
-										"id": "85a93b3f-4bee-49b9-8099-bf1b6e3e5c4b"
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -2283,14 +2284,15 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "632d2b4b-b4b9-4eca-9630-b93376fb7128",
 										"exec": [
 											"pm.test('Status code = 400 (Bad request)', () => {",
 											"    pm.response.to.have.status(400)",
 											"});",
 											"",
-											"pm.test('Response time is less than 250ms', () => {",
-											"  pm.expect(pm.response.responseTime).to.be.below(250);",
-											"});",
+											"// pm.test(\"Response time is less than 250ms\", () => {",
+											"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+											"// });",
 											"",
 											"const responseJson = pm.response.json();",
 											"pm.test('Error message - validations.invalid / password', () => {",
@@ -2298,8 +2300,7 @@
 											"  })",
 											""
 										],
-										"type": "text/javascript",
-										"id": "632d2b4b-b4b9-4eca-9630-b93376fb7128"
+										"type": "text/javascript"
 									}
 								}
 							],
@@ -2352,14 +2353,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "e9b22d9a-1271-4a41-8750-158164e11d1f",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -2369,8 +2371,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "e9b22d9a-1271-4a41-8750-158164e11d1f"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -2414,6 +2415,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "97af7b3f-fe7c-462b-a428-3c4c8410cf4b",
 												"exec": [
 													"pm.environment.set(\"key\", '')",
 													"",
@@ -2421,12 +2423,11 @@
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "97af7b3f-fe7c-462b-a428-3c4c8410cf4b"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -2465,14 +2466,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "73fdb3e6-05af-4d02-9487-5fe58da8b25f",
 												"exec": [
 													"pm.test('Status code = 400 Bad Request', () => {",
 													"    pm.response.to.have.status(400)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"console.log('Create NewBox Step #1 (Name)')",
 													"",
@@ -2484,18 +2486,17 @@
 													"    pm.expect(responseJson.error.errors[0].params.min).to.equal(1);",
 													"})"
 												],
-												"type": "text/javascript",
-												"id": "73fdb3e6-05af-4d02-9487-5fe58da8b25f"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "6d2aa8ca-9e90-4555-8e85-81fcce8aba53",
 												"exec": [
 													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
 												],
-												"type": "text/javascript",
-												"id": "6d2aa8ca-9e90-4555-8e85-81fcce8aba53"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -2533,21 +2534,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "b4ce3d83-f37f-4487-8f90-f1cd603a4c66",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "b4ce3d83-f37f-4487-8f90-f1cd603a4c66"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -2591,14 +2592,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "3553a62a-06bc-49b1-854a-0373f8140e8e",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -2608,8 +2610,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "3553a62a-06bc-49b1-854a-0373f8140e8e"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -2653,6 +2654,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "4cb4f174-4dec-434c-99bb-ce158e83ed21",
 												"exec": [
 													"pm.environment.set(\"key\", pm.response.text())",
 													"",
@@ -2660,12 +2662,11 @@
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "4cb4f174-4dec-434c-99bb-ce158e83ed21"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -2704,14 +2705,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "0a50ad54-09b5-4ec4-9490-77471aafc4fd",
 												"exec": [
 													"pm.test('Status code = 400 Bad Request', () => {",
 													"    pm.response.to.have.status(400)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"console.log('Create NewBox Step #1 (Name)')",
 													"",
@@ -2723,18 +2725,17 @@
 													"    pm.expect(responseJson.error.errors[1].params.min).to.eql(1);",
 													"})"
 												],
-												"type": "text/javascript",
-												"id": "0a50ad54-09b5-4ec4-9490-77471aafc4fd"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "0872016a-3814-48da-a283-6960c7b5d853",
 												"exec": [
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "0872016a-3814-48da-a283-6960c7b5d853"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -2772,21 +2773,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "8904df50-9dc2-4dd2-8443-ebc49d727510",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "8904df50-9dc2-4dd2-8443-ebc49d727510"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -2830,14 +2831,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "756e409c-ad7c-4bf5-a10d-9b9056591b55",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -2847,8 +2849,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "756e409c-ad7c-4bf5-a10d-9b9056591b55"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -2892,6 +2893,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "d24c9e1e-3173-44cd-bdac-b2f3742b1de3",
 												"exec": [
 													"// pm.environment.set(\"key\", pm.response.text())",
 													"",
@@ -2899,22 +2901,21 @@
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "d24c9e1e-3173-44cd-bdac-b2f3742b1de3"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "307610ba-ab89-4bfe-a827-d966ae1514f1",
 												"exec": [
 													"pm.environment.set(\"key\", '')"
 												],
-												"type": "text/javascript",
-												"id": "307610ba-ab89-4bfe-a827-d966ae1514f1"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -2953,14 +2954,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "54aa07c1-6e1a-4970-9d64-0289dc9af65b",
 												"exec": [
 													"pm.test('Status code = 400 Bad Request', () => {",
 													"    pm.response.to.have.status(400)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"console.log('Create NewBox Step #1 (Name)')",
 													"",
@@ -2976,18 +2978,17 @@
 													"    pm.expect(responseJson.error.errors[3].field).to.eql('key');",
 													"})"
 												],
-												"type": "text/javascript",
-												"id": "54aa07c1-6e1a-4970-9d64-0289dc9af65b"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "2042b8e5-5e0c-4155-a0db-4f824b045c55",
 												"exec": [
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "2042b8e5-5e0c-4155-a0db-4f824b045c55"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3025,21 +3026,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "40401dbf-2633-4e35-8edb-561213706259",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "40401dbf-2633-4e35-8edb-561213706259"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3083,14 +3084,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "85402d13-2733-4dab-b704-aea6d524407f",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -3100,8 +3102,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "85402d13-2733-4dab-b704-aea6d524407f"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3145,6 +3146,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "f408db64-363c-4ab6-9cb1-8d4988f1db51",
 												"exec": [
 													"// max key lenght is 64",
 													"pm.environment.set(\"key\", 'qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnm')",
@@ -3154,12 +3156,11 @@
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "f408db64-363c-4ab6-9cb1-8d4988f1db51"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3198,14 +3199,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "d44a763d-9ab5-4e84-826f-443e62a4e9c7",
 												"exec": [
 													"pm.test('Status code = 400 Bad Request', () => {",
 													"    pm.response.to.have.status(400)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"console.log('Create NewBox Step #1 (Name)')",
 													"",
@@ -3217,18 +3219,17 @@
 													"    pm.expect(responseJson.error.errors[0].params.max).to.equal(64);",
 													"})"
 												],
-												"type": "text/javascript",
-												"id": "d44a763d-9ab5-4e84-826f-443e62a4e9c7"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "6b30f195-a830-4cfc-8027-6e1309158176",
 												"exec": [
 													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
 												],
-												"type": "text/javascript",
-												"id": "6b30f195-a830-4cfc-8027-6e1309158176"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3266,21 +3267,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "7b4d5fd6-1c83-4db8-809e-69f9a983dea0",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "7b4d5fd6-1c83-4db8-809e-69f9a983dea0"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3324,14 +3325,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "1211da56-476c-4e3c-a7cc-3fc2cb80992a",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -3341,8 +3343,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "1211da56-476c-4e3c-a7cc-3fc2cb80992a"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3386,6 +3387,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "6234676a-4366-42ec-af1a-605dec8f277a",
 												"exec": [
 													"pm.environment.set(\"key\", pm.response.text())",
 													"",
@@ -3394,12 +3396,11 @@
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "6234676a-4366-42ec-af1a-605dec8f277a"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3438,14 +3439,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "8ebea964-3486-4f6c-9d74-08015f9cf129",
 												"exec": [
 													"pm.test('Status code = 400 Bad Request', () => {",
 													"    pm.response.to.have.status(400)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"console.log('Create NewBox Step #1 (Name)')",
 													"",
@@ -3457,18 +3459,17 @@
 													"    pm.expect(responseJson.error.errors[0].params.max).to.equal(256);",
 													"})"
 												],
-												"type": "text/javascript",
-												"id": "8ebea964-3486-4f6c-9d74-08015f9cf129"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "f1f98e5d-2019-48cf-8f60-bbd0369dac01",
 												"exec": [
 													"pm.environment.set(\"name\", \"qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcv\")"
 												],
-												"type": "text/javascript",
-												"id": "f1f98e5d-2019-48cf-8f60-bbd0369dac01"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3506,21 +3507,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "42efabb4-5625-4eec-8bc3-10e0db50a27e",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "42efabb4-5625-4eec-8bc3-10e0db50a27e"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3564,14 +3565,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "9f6f2156-c491-43da-abe9-cb429e57874b",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -3581,8 +3583,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "9f6f2156-c491-43da-abe9-cb429e57874b"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3626,6 +3627,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "ceb5d1e8-2e41-4213-ad9b-822f8b8bb8b9",
 												"exec": [
 													"pm.environment.set(\"key\", pm.response.text())",
 													"",
@@ -3634,12 +3636,11 @@
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "ceb5d1e8-2e41-4213-ad9b-822f8b8bb8b9"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3678,28 +3679,28 @@
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "e58906b8-3108-42c2-8609-71b8d1907147",
 												"exec": [
 													"pm.environment.set(\"name\", \"±!@#$%^&*(){}:[]:~<>?\")"
 												],
-												"type": "text/javascript",
-												"id": "e58906b8-3108-42c2-8609-71b8d1907147"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "test",
 											"script": {
+												"id": "5b9c9808-1f1b-4ce4-a961-30cceaa34d0d",
 												"exec": [
 													"pm.test('Status code = 200 OK', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													""
 												],
-												"type": "text/javascript",
-												"id": "5b9c9808-1f1b-4ce4-a961-30cceaa34d0d"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3737,21 +3738,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "cacc6bc3-fb42-400e-b4b9-6e5df36de8a0",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "cacc6bc3-fb42-400e-b4b9-6e5df36de8a0"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3795,14 +3796,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "6412d932-7e5f-4918-9b51-5fb7cb423813",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -3812,8 +3814,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "6412d932-7e5f-4918-9b51-5fb7cb423813"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3857,6 +3858,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "ec5e7f68-7b4c-483b-8f66-d208f38c392d",
 												"exec": [
 													"// max key lenght is 64",
 													"pm.environment.set(\"key\", '§±!@#$%^&*()_+-=:;\\|~`<>?/')",
@@ -3866,12 +3868,11 @@
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "ec5e7f68-7b4c-483b-8f66-d208f38c392d"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3910,14 +3911,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "f6a7eff6-089f-480a-a9ae-e7327127d625",
 												"exec": [
 													"pm.test('Status code = 400 Bad Request', () => {",
 													"    pm.response.to.have.status(400)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"console.log('Create NewBox Step #1 (Name)')",
 													"",
@@ -3928,18 +3930,17 @@
 													"    pm.expect(responseJson.error.errors[0].field).to.eql('key');",
 													"})"
 												],
-												"type": "text/javascript",
-												"id": "f6a7eff6-089f-480a-a9ae-e7327127d625"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "00bba560-4ba2-4b3e-a005-fe42149d5bef",
 												"exec": [
 													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
 												],
-												"type": "text/javascript",
-												"id": "00bba560-4ba2-4b3e-a005-fe42149d5bef"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -3977,21 +3978,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "e19471ad-4e2e-4cbb-ad94-97472d5ed7e1",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "e19471ad-4e2e-4cbb-ad94-97472d5ed7e1"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -4035,14 +4036,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "c5430cd5-cbf3-499f-9adc-64c42d674e1b",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -4052,8 +4054,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "c5430cd5-cbf3-499f-9adc-64c42d674e1b"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -4097,6 +4098,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "ffd1b331-6022-499c-9ef2-b80186e058a8",
 												"exec": [
 													"// max key lenght is 64",
 													"pm.environment.set(\"key\", 'test 123')",
@@ -4106,12 +4108,11 @@
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "ffd1b331-6022-499c-9ef2-b80186e058a8"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -4150,14 +4151,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "3eb60daa-ac1d-4a5e-8ef2-2617c9db55e4",
 												"exec": [
 													"pm.test('Status code = 400 Bad Request', () => {",
 													"    pm.response.to.have.status(400)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"console.log('Create NewBox Step #1 (Name)')",
 													"",
@@ -4168,18 +4170,17 @@
 													"    pm.expect(responseJson.error.errors[0].field).to.eql('key');",
 													"})"
 												],
-												"type": "text/javascript",
-												"id": "3eb60daa-ac1d-4a5e-8ef2-2617c9db55e4"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "926bafb8-e418-4490-8c00-4777d0e47aaf",
 												"exec": [
 													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
 												],
-												"type": "text/javascript",
-												"id": "926bafb8-e418-4490-8c00-4777d0e47aaf"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -4217,21 +4218,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "a756fefb-5dcb-49de-aeeb-712e00ef9963",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "a756fefb-5dcb-49de-aeeb-712e00ef9963"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -4275,14 +4276,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "2f6ba2c2-dfae-4ee2-9c18-4ebcd5affafe",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"pm.test(\"Login responce body is OK\", () => {",
 													"  const responseJson = pm.response.json();",
@@ -4292,8 +4294,7 @@
 													"  pm.expect(responseJson.email).to.eql('rltestmail002@yandex.com');",
 													"});"
 												],
-												"type": "text/javascript",
-												"id": "2f6ba2c2-dfae-4ee2-9c18-4ebcd5affafe"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -4337,6 +4338,7 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "ef3f00c9-826d-4221-b450-cc29c7da6043",
 												"exec": [
 													"// max key lenght is 64",
 													"pm.environment.set(\"key\", '       ')",
@@ -4346,12 +4348,11 @@
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});"
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });"
 												],
-												"type": "text/javascript",
-												"id": "ef3f00c9-826d-4221-b450-cc29c7da6043"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -4390,14 +4391,15 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "2dff5a48-37ce-450c-a463-8f215735f299",
 												"exec": [
 													"pm.test('Status code = 400 Bad Request', () => {",
 													"    pm.response.to.have.status(400)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"console.log('Create NewBox Step #1 (Name)')",
 													"",
@@ -4408,18 +4410,17 @@
 													"    pm.expect(responseJson.error.errors[0].field).to.eql('key');",
 													"})"
 												],
-												"type": "text/javascript",
-												"id": "2dff5a48-37ce-450c-a463-8f215735f299"
+												"type": "text/javascript"
 											}
 										},
 										{
 											"listen": "prerequest",
 											"script": {
+												"id": "788a68fa-45f5-4217-b4ea-164b8936c0f9",
 												"exec": [
 													"pm.environment.set(\"name\", pm.variables.replaceIn(\"{{$randomPassword}}\"))"
 												],
-												"type": "text/javascript",
-												"id": "788a68fa-45f5-4217-b4ea-164b8936c0f9"
+												"type": "text/javascript"
 											}
 										}
 									],
@@ -4457,21 +4458,21 @@
 										{
 											"listen": "test",
 											"script": {
+												"id": "15545880-c733-4669-886b-8fdaa3e74bcd",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
 													"    pm.response.to.have.status(200)",
 													"});",
 													"",
-													"pm.test(\"Response time is less than 250ms\", () => {",
-													"  pm.expect(pm.response.responseTime).to.be.below(250);",
-													"});",
+													"// pm.test(\"Response time is less than 250ms\", () => {",
+													"//   pm.expect(pm.response.responseTime).to.be.below(250);",
+													"// });",
 													"",
 													"// system clean up ",
 													"pm.environment.set(\"key\", '')",
 													"pm.environment.set(\"name\", '')"
 												],
-												"type": "text/javascript",
-												"id": "15545880-c733-4669-886b-8fdaa3e74bcd"
+												"type": "text/javascript"
 											}
 										}
 									],
