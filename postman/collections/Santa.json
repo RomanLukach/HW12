@@ -396,7 +396,7 @@
 												"id": "6dc994b4-ee1a-4a08-9cfb-eb50bd6e1e93",
 												"exec": [
 													"pm.test('Status code = 200', () => {",
-													"    pm.response.to.have.status(400)",
+													"    pm.response.to.have.status(200)",
 													"});",
 													"",
 													"// pm.test(\"Response time is less than 250ms\", () => {",
